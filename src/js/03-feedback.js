@@ -16,6 +16,19 @@ function onFormData(event) {
     localStorage.setItem('feedback-form-state', JSON.stringify(dataForm));
 };
 
+function reloudPage() {
+    const dataReloud = JSON.parse(localStorage.getItem('feedback-form-state'));
+    const email = document.querySelector('.feedback-form input');
+    const message = document.querySelector('.feedback-form textarea');
+
+    if (dataReloud) {
+        email.value = dataReloud.email;
+        message.value = dataReloud.message;
+    }
+};
+
+reloudPage();
+
 function onSubmitForm(event) {
     event.preventDefault();
     
