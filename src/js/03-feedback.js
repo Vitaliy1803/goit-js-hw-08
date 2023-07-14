@@ -17,22 +17,20 @@ function onFormData(event) {
 };
 
 function onSubmitForm(event) {
-    console.log(JSON.parse(localStorage.getItem('feedback-form-state')));
     event.preventDefault();
+    
+    const email = event.currentTarget.elements.email;
+    const message = event.currentTarget.elements.message;
+
+    if (email.value === '' || message.value === '') {
+        alert('Please fill in all the fields!');
+    }else {
+        dataForm.email = email.value;
+        dataForm.message = message.value;
+
+        console.log(dataForm);
+    }
     event.currentTarget.reset();
-    localStorage.removeItem('feedback-form-state');
+
 };
 
-function localDataForm() {
-   const savedDataForm = JSON.parse(localStorage.getItem('feedback-form-state'));
-   const email = document.querySelector('.feedback-form input');
-   const message = document.querySelector('.feedback-form textarea');
-
-
-   if (savedDataForm) {
-    email.value = savedDataForm.email;
-    message.value = savedDataForm.message;
-   }
-};
-
-localDataForm();
