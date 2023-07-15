@@ -22,8 +22,8 @@ function reloudPage() {
     const message = document.querySelector('.feedback-form textarea');
 
     if (dataReloud) {
-        email.value = dataReloud.email;
-        message.value = dataReloud.message;
+        email.value = dataReloud.email || '';
+        message.value = dataReloud.message || '';
     }
 };
 
@@ -44,6 +44,7 @@ function onSubmitForm(event) {
         console.log(dataForm);
     }
     event.currentTarget.reset();
+    localStorage.removeItem('feedback-form-state');
 
 };
 
